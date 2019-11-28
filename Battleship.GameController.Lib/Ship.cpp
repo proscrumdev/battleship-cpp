@@ -1,10 +1,6 @@
-#include "stdafx.h"
 #include "Ship.h"
 #include <iostream>
-#include "..\Windows.Helpers\Console.h"
-#include "..\Windows.Helpers\ConsoleColor.h"
 using namespace std;
-using namespace Windows::Helpers;
 
 namespace Battleship
 {
@@ -16,7 +12,7 @@ namespace Battleship
 	  {
 	  }
 
-	  Ship::Ship(std::string Name, int Size, ConsoleColor Color) : Name(Name), Size(Size), Color(Color)
+	  Ship::Ship(std::string Name, int Size) : Name(Name), Size(Size)
 	  {
 	  }
 
@@ -27,7 +23,7 @@ namespace Battleship
 	  void Ship::AddPosition(string input)
 	  {
 		char cColumn = toupper(input.at(0));
-		char cRow = input.at(1);  // Kommentar
+		char cRow = input.at(1);  
 		
 		Letters lColumn = (Letters) (cColumn - 'A');
 		int nRow = cRow - '0';

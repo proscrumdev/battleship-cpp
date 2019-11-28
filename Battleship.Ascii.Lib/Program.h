@@ -2,7 +2,7 @@
 
 #include <list>
 
-#include "..\Battleship.GameController.Lib\Ship.h"
+#include "../Battleship.GameController.Lib/Ship.h"
 
 using namespace std;
 using namespace Battleship::GameController::Contracts;

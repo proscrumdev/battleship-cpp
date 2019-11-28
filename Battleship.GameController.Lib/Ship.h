@@ -4,7 +4,6 @@
 #include <list>
 
 #include "Position.h"
-#include "..\Windows.Helpers\ConsoleColor.h"
 
 namespace Battleship
 {
@@ -17,7 +16,7 @@ namespace Battleship
 
 	  public:
 		Ship();
-		Ship(std::string Name, int Size, Windows::Helpers::ConsoleColor Color = Windows::Helpers::ConsoleColor());
+		Ship(std::string Name, int Size);
 		~Ship();
 
 	  public:
@@ -31,11 +30,6 @@ namespace Battleship
 		/// Gets or sets the positions.
 		/// </summary>
 		std::list<Position> Positions;
-
-		/// <summary>
-		/// The color of the ship
-		/// </summary>
-		Windows::Helpers::ConsoleColor Color;
 
 		/// <summary>
 		/// Gets or sets the size.

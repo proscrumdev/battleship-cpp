@@ -1,22 +1,15 @@
-#include "stdafx.h"
 #include "GameController.h"
-
 #include <stdlib.h>
 #include <time.h>
-
 #include <algorithm>
 #include <stdexcept>
-
 #include <iostream>
-#include "..\Windows.Helpers\Console.h"
-#include "..\Windows.Helpers\ConsoleColor.h"
 
 namespace Battleship
 {
   namespace GameController
   {
 	using namespace std;
-	using namespace Windows::Helpers;
 
 	GameController::GameController()
 	{
@@ -51,11 +44,11 @@ namespace Battleship
 	list<Ship> GameController::InitializeShips()
 	{
 	  list<Ship> ships;
-	  ships.insert(ships.end(), Ship("Aircraft Carrier", 5, ConsoleColor(ForegroundGreen)));
-	  ships.insert(ships.end(), Ship("Battleship", 4, ConsoleColor(ForegroundRed)));
-	  ships.insert(ships.end(), Ship("Submarine", 3, ConsoleColor(ForegroundMagenta)));
-	  ships.insert(ships.end(), Ship("Destroyer", 3, ConsoleColor(ForegroundYellow)));
-	  ships.insert(ships.end(), Ship("Patrol Boat", 2, ConsoleColor(ForegroundGold)));
+	  ships.insert(ships.end(), Ship("Aircraft Carrier", 5));
+	  ships.insert(ships.end(), Ship("Battleship", 4));
+	  ships.insert(ships.end(), Ship("Submarine", 3));
+	  ships.insert(ships.end(), Ship("Destroyer", 3));
+	  ships.insert(ships.end(), Ship("Patrol Boat", 2));
 
 	  return ships;
 	}

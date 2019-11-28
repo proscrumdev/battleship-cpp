@@ -7,7 +7,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 using namespace Battleship::GameController::Contracts;
 using namespace Battleship::GameController;
-using namespace Windows::Helpers;
 
 namespace Battleship
 {

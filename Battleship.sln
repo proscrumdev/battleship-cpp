@@ -1,19 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29512.175
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Battleship.Ascii.Lib", "Battleship.Ascii.Lib\Battleship.Ascii.Lib.vcxproj", "{7934EC03-106B-4ACE-BFFE-36B58EF1F1A9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Battleship.Ascii.Exe", "Battleship.Ascii.Exe\Battleship.Ascii.Exe.vcxproj", "{635AB0C4-7014-4EDB-ACCD-1BEC9E65C9DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7934EC03-106B-4ACE-BFFE-36B58EF1F1A9} = {7934EC03-106B-4ACE-BFFE-36B58EF1F1A9}
-		{26013E27-F975-46EB-A3AB-C6AA85059580} = {26013E27-F975-46EB-A3AB-C6AA85059580}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Battleship.GameController.Lib", "Battleship.GameController.Lib\Battleship.GameController.Lib.vcxproj", "{CD84DBD3-C819-43E5-A156-958D65DD6D6C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Windows.Helpers", "Windows.Helpers\Windows.Helpers.vcxproj", "{26013E27-F975-46EB-A3AB-C6AA85059580}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Battleship.Ascii.Tests", "Battleship.Ascii.Tests\Battleship.Ascii.Tests.vcxproj", "{98573B20-EC50-46A9-BBB7-99CED705EB11}"
 EndProject
@@ -37,10 +34,6 @@ Global
 		{CD84DBD3-C819-43E5-A156-958D65DD6D6C}.Debug|x86.Build.0 = Debug|Win32
 		{CD84DBD3-C819-43E5-A156-958D65DD6D6C}.Release|x86.ActiveCfg = Release|Win32
 		{CD84DBD3-C819-43E5-A156-958D65DD6D6C}.Release|x86.Build.0 = Release|Win32
-		{26013E27-F975-46EB-A3AB-C6AA85059580}.Debug|x86.ActiveCfg = Debug|Win32
-		{26013E27-F975-46EB-A3AB-C6AA85059580}.Debug|x86.Build.0 = Debug|Win32
-		{26013E27-F975-46EB-A3AB-C6AA85059580}.Release|x86.ActiveCfg = Release|Win32
-		{26013E27-F975-46EB-A3AB-C6AA85059580}.Release|x86.Build.0 = Release|Win32
 		{98573B20-EC50-46A9-BBB7-99CED705EB11}.Debug|x86.ActiveCfg = Debug|Win32
 		{98573B20-EC50-46A9-BBB7-99CED705EB11}.Debug|x86.Build.0 = Debug|Win32
 		{98573B20-EC50-46A9-BBB7-99CED705EB11}.Release|x86.ActiveCfg = Release|Win32
@@ -52,5 +45,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47A8D9E9-A7A0-40BE-9A0A-BC03AD7E9B3B}
 	EndGlobalSection
 EndGlobal

@@ -1,21 +1,15 @@
-#include "stdafx.h"
-#include "windows.h"
 #include "Program.h"
 
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
 
-#include "..\Windows.Helpers\Console.h"
-#include "..\Windows.Helpers\ConsoleColor.h"
-#include "..\Battleship.GameController.Lib\GameController.h"
+#include "../Battleship.GameController.Lib/GameController.h"
 
-#include <windows.h> 
-#include <mciapi.h>
 #pragma comment(lib,"winmm.lib")  //for MSV C++   
 
-using namespace Windows::Helpers;
 using namespace Battleship::GameController;
 using namespace Battleship::GameController::Contracts;
 
@@ -42,6 +36,7 @@ namespace Battleship
     
     void Program::Main()
     {
+        cout << "\033[35m";
       cout << R"(                                     |__                                       )" << endl;
       cout << R"(                                     | \ /                                     )" << endl;
       cout << R"(                                     ---                                       )" << endl;
@@ -56,6 +51,7 @@ namespace Battleship
       cout << R"(|                        Welcome to Battleship                         BB-61/  )" << endl;
       cout << R"( \_________________________________________________________________________|   )" << endl;
       cout << endl;
+      cout << "\033[0m";
 
 	  InitializeGame();
 
@@ -64,7 +60,7 @@ namespace Battleship
 
     void Program::StartGame()
     {
-      Console::Clear();
+      //Console::Clear();
       cout << R"(                  __     )" << endl;
       cout << R"(                 /  \    )" << endl;
       cout << R"(           .-.  |    |   )" << endl;
@@ -93,7 +89,7 @@ namespace Battleship
         bool isHit = GameController::GameController::CheckIsHit(enemyFleet, position);
         if (isHit)
         {
-            Console::Beep();
+            // Console::Beep();
 
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
@@ -116,7 +112,7 @@ namespace Battleship
 
         if (isHit)
         {
-            Console::Beep();
+            //Console::Beep();
 
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
@@ -182,6 +178,7 @@ namespace Battleship
 			cout << "Please enter the positions for the " << ship.Name << " (size: " << ship.Size << ")" << endl;
 			for (int i = 1; i <= ship.Size; i++)
 			{
+        cout << "Enter position " << i << " of " << ship.Size << "\n";
 				string input;
 				getline(cin, input);
 				Position inputPosition = ParsePosition(input);

@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Position.h"
 
 namespace Battleship
