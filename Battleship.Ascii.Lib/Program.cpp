@@ -36,7 +36,6 @@ namespace Battleship
     
     void Program::Main()
     {
-        cout << "\033[35m";
       cout << R"(                                     |__                                       )" << endl;
       cout << R"(                                     | \ /                                     )" << endl;
       cout << R"(                                     ---                                       )" << endl;

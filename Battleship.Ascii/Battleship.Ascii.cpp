@@ -1,4 +1,4 @@
-// Battleship.Ascii.Exe.cpp : Defines the entry point for the console application.
+// Battleship.Ascii.cpp : Defines the entry point for the console application.
 //
 
 #include "../Battleship.Ascii.Lib/Program.h"
