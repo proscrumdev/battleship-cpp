@@ -25,7 +25,7 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'ls'
   
-- script: 'TestRunner.exe XML >> testresults.xml'
+- script: './TestRunner.exe XML >> testresults.xml'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Execute Unit-Tests'
 
