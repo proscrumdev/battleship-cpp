@@ -4,7 +4,7 @@ CPPUNIT_PATH=/usr/local/lib
 $(TARGET): Battleship.o Program.a GameController.a 
 	g++ $^ -o $@
 
-Battleship.o: ../Battleship.Ascii.Exe/Battleship.Ascii.Exe.cpp
+Battleship.o: ../Battleship.Ascii/Battleship.Ascii.cpp
 	g++ -c $< -o $@
 
 Program.a: Program.o
