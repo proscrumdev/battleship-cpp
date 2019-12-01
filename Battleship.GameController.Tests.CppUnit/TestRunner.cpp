@@ -6,6 +6,10 @@
 #include <cppunit/TestResultCollector.h>
 #include <cppunit/TestRunner.h>
 #include <cppunit/BriefTestProgressListener.h>
+#include <stdlib.h>
+#include <cstring>
+
+using namespace std;
 
 int main (int argc, char* argv[])
 {
@@ -25,15 +29,24 @@ int main (int argc, char* argv[])
     testrunner.addTest (CPPUNIT_NS :: TestFactoryRegistry :: getRegistry ().makeTest ());
     testrunner.run (testresult);
 
+    cout << argc;
+    cout << argv[1];
+    cout << strcmp(argv[1],"XML");
+
+    if (argc == 2 && strcmp(argv[1],"XML") == 0)
+    {
+        CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, std::cerr);
+        xmlOutputter.write ();
+    }
+    else
+    {
+        CPPUNIT_NS :: TextOutputter textOutputter (&collectedresults, std::cerr);
+        textOutputter.write ();        
+    }
+    
     // // Resultate im Compiler-Format ausgeben
     // CPPUNIT_NS :: CompilerOutputter compileroutputter (&collectedresults, std::cerr);
     // compileroutputter.write ();
-
-    // CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, std::cerr);
-    // xmlOutputter.write ();
-
-    CPPUNIT_NS :: TextOutputter textOutputter (&collectedresults, std::cerr);
-    textOutputter.write ();
 
     // Rueckmeldung, ob Tests erfolgreich waren
     return collectedresults.wasSuccessful () ? 0 : 1;
