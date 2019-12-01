@@ -47,7 +47,7 @@ steps:
   
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'JUnit'
+    testResultsFormat: CTest
     testResultsFiles: '**/testresults.xml'
 
 - task: CopyFiles@2
