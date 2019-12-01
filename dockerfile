@@ -10,4 +10,5 @@ RUN ./configure
 RUN make
 RUN make install
 RUN export LD_LIBRARY_PATH=/usr/local/lib
+ENV LD_LIBRARY_PATH /usr/local/lib
 WORKDIR /
