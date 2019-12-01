@@ -29,10 +29,6 @@ int main (int argc, char* argv[])
     testrunner.addTest (CPPUNIT_NS :: TestFactoryRegistry :: getRegistry ().makeTest ());
     testrunner.run (testresult);
 
-    cout << argc;
-    cout << argv[1];
-    cout << strcmp(argv[1],"XML");
-
     if (argc == 2 && strcmp(argv[1],"XML") == 0)
     {
         CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, std::cerr);
