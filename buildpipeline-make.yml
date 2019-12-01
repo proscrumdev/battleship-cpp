@@ -21,6 +21,10 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Build testrunner using make'
 
+- script: 'pwd'
+  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
+  displayName: 'pwd'
+  
 - script: 'ls'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'ls'
@@ -33,6 +37,14 @@ steps:
   workingDirectory: $(Build.SourcesDirectory)/MAKE
   displayName: 'Build using make'
 
+- script: 'pwd'
+  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
+  displayName: 'pwd'
+  
+- script: 'ls'
+  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
+  displayName: 'ls'
+  
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
