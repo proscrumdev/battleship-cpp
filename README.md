@@ -47,16 +47,12 @@ if you are using Visual Studio, you can use the TestExplorer to run tests. You f
 
 You can als run Unit-Tests without Visual STudio, for example in the Docker Container. They are created using CppUnit (https://sourceforge.net/projects/cppunit/). These tests can be found in the folders
 - Battleship.GameController.Tests.CppUnit
+- Battleship.Ascii.Tests.CppUnit
 
-To prepare for execution of Unit-Tests, use these commands:
+To build and run the unit tests, use these commands:
 
 ```bash
-export LD_LIBRARY_PATH=/usr/local/lib
 cd /battleship/MAKE
-```
-For each execution you then just run
-
-```bash
 make TestRunner.exe
 ./TestRunner.exe
 ```
