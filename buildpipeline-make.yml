@@ -29,7 +29,7 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'ls'
   
-- script: './TestRunner.exe XML >> testresults.xml'
+- script: './TestRunner.exe XML'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Execute Unit-Tests'
 
@@ -53,7 +53,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/MAKE/'
-    Contents: '**'
+    Contents: '**.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true'
 

@@ -31,7 +31,8 @@ int main (int argc, char* argv[])
 
     if (argc == 2 && strcmp(argv[1],"XML") == 0)
     {
-        CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, std::cerr);
+        ofstream xmlFileOut("cpptestresults.xml");
+        CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, xmlFileOut);
         xmlOutputter.write ();
     }
     else
