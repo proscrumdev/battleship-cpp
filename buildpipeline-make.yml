@@ -17,11 +17,11 @@ pool:
 container: battleship
 
 steps:
-- script: 'make TestRunner.exe >> testresults.xml'
+- script: 'make TestRunner.exe'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Build testrunner using make'
 
-- script: 'TestRunner.exe XML'
+- script: 'TestRunner.exe XML >> testresults.xml'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Execute Unit-Tests'
 
