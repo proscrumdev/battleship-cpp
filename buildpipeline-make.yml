@@ -9,7 +9,7 @@ trigger:
 resources:
   containers:
   - container: battleship
-    image: tschissler/battleship-cpp
+    image: proscrumdev/battleship-cpp
 
 pool:
   vmImage: 'Ubuntu-latest'
@@ -20,18 +20,14 @@ steps:
 - script: 'make TestRunner.exe'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Build testrunner using make'
-
-- script: 'pwd'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'pwd'
-  
-- script: 'ls'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'ls'
-  
+ 
 - script: './TestRunner.exe XML'
   workingDirectory: '$(Build.SourcesDirectory)/MAKE'
   displayName: 'Execute Unit-Tests'
+
+- script: '/XSLTTransform_Linux_x64/XSLTTransform ./JUnitTransform.xslt ./cpptestresults.xml ./JUnitTestresults.xml'
+  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
+  displayName: 'Transforming TestResults to JUnit format'
 
 - script: make
   workingDirectory: $(Build.SourcesDirectory)/MAKE
@@ -48,7 +44,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: JUnit
-    testResultsFiles: '**/*testresults.xml'
+    testResultsFiles: '**/*Testresults.xml'
 
 - task: CopyFiles@2
   inputs:
