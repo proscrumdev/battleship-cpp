@@ -1,14 +1,13 @@
 FROM gcc
 
-ADD . /cppunit
+ADD cppunit-1.12.1.tar /cppunit
+#ADD MAKE/XSLTTransform_Linux_x64 /XSLTTransform_Linux_x64
 
 WORKDIR /cppunit
 RUN dir
-RUN tar -xf cppunit-1.12.1.tar
 WORKDIR /cppunit/cppunit-1.12.1
 RUN ./configure
 RUN make
 RUN make install
-RUN export LD_LIBRARY_PATH=/usr/local/lib
 ENV LD_LIBRARY_PATH /usr/local/lib
 WORKDIR /
