@@ -22,7 +22,7 @@ make
 
 ## Build and run in a Docker container
 
-YOu can use a Docker Container as a save environment providing all necessary tools to build and run the Battleship application-
+You can use a Docker Container as a save environment providing all necessary tools to build and run the Battleship application-
 
 ### Run a Docker Container with the gcc image
 
