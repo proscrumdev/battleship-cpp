@@ -1,3 +1,5 @@
+## This is a beta version which means this code has not been verified in a class scenario. So if you are the first person using this in class, you should spend some more time testing it upfront and we would be very happy to hear any issues or successes with it. 
+
 Visual Studio build
 
 [![Build status](https://psdstewards.visualstudio.com/PSD/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://psdstewards.visualstudio.com/PSD/_build/latest?definitionId=18)
