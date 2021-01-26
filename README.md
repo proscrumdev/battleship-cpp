@@ -1,12 +1,10 @@
-## This is a beta version which means this code has not been verified in a class scenario. So if you are the first person using this in class, you should spend some more time testing it upfront and we would be very happy to hear any issues or successes with it. 
-
 Visual Studio build
 
-[![Build status](https://psdstewards.visualstudio.com/PSD/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://psdstewards.visualstudio.com/PSD/_build/latest?definitionId=18)
+[![Build status](https://dev.azure.com/aps-sd-stewards/aps-sd/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://dev.azure.com/aps-sd-stewards/aps-sd/_build/latest?definitionId=18)
 
 Make build
 
-[![Build status](https://psdstewards.visualstudio.com/PSD/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://psdstewards.visualstudio.com/PSD/_build/latest?definitionId=20)
+[![Build status](https://dev.azure.com/aps-sd-stewards/aps-sd/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://dev.azure.com/aps-sd-stewards/aps-sd/_build/latest?definitionId=20)
 
 # Battleship C++
 A simple game of Battleship, written in C++.
