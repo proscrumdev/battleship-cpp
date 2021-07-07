@@ -7,7 +7,7 @@ Make build
 [![Build status](https://dev.azure.com/aps-sd-stewards/aps-sd/_apis/build/status/proscrumdev.battleship-cpp-CI)](https://dev.azure.com/aps-sd-stewards/aps-sd/_build/latest?definitionId=20)
 
 # Battleship C++
-A simple game of Battleship, written in C++.
+A simple game of Battleship, written in C++. The purpose of this repository is to serve as an entry point into coding exercises and it was especially created for scrum.orgs Applying Professional Scrum for Software Development course (www.scrum.org/apssd). The code in this repository is unfinished by design.
 
 This code can be compiled either by using MAKE or Visual Studio. It has been tested on Windows 10 and on Debian GNU/Linux 10
 
