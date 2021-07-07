@@ -77,7 +77,9 @@ namespace Battleship
 
       do
       {
-        cout << endl;
+        cout << endl << endl;
+        cout << Colours::blue;
+        cout << "=======================================" << endl;
         cout << Colours::yellow;
         cout << R"(Player, it's your turn   )" << endl;
 
