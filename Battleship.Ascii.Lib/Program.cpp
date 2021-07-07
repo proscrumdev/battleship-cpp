@@ -33,7 +33,8 @@ namespace Battleship
 
     list<Ship> Program::myFleet;
     list<Ship> Program::enemyFleet;
-    
+
+
     void Program::Main()
     {
       cout << R"(                                     |__                                       )" << endl;
@@ -157,6 +158,21 @@ namespace Battleship
 
       Position position(lColumn, nRow);
       return position;
+    }
+
+    // PRIVATE methods
+    void Program::MessageYouWon()
+    {
+        cout << R"()" << endl;
+        cout << R"(You are the winner!)" << endl;
+        cout << R"()" << endl;
+    }
+
+    void Program::MessageYouLost()
+    {
+        cout << R"()" << endl;
+        cout << R"(You Lost!)" << endl;
+        cout << R"()" << endl;
     }
 
     void Program::InitializeGame()

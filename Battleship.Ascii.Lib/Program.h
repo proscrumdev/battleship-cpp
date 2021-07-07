@@ -31,6 +31,9 @@ namespace Battleship
 	  static void InitializeMyFleet();
 	  static void InitializeEnemyFleet(list<Ship> &Fleet);
 
+      static void MessageYouWon();
+      static void MessageYouLost();
+
 	public:
 	  static Position ParsePosition(string input);
 	  static Position GetRandomPosition();
