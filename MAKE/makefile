@@ -9,10 +9,13 @@ $(TARGET): Battleship.o Program.a GameController.a
 Battleship.o: ../Battleship.Ascii/Battleship.Ascii.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-Program.a: Program.o
+Program.a: Program.o Colours.o
 	ar rcs $@ $^
 
 Program.o: ../Battleship.Ascii.Lib/Program.cpp ../Battleship.Ascii.Lib/Program.h
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+Colours.o: ../Battleship.Ascii.Lib/Colours.cpp ../Battleship.Ascii.Lib/Colours.h
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 GameController.a: ../Battleship.GameController.Lib/Ship.o ../Battleship.GameController.Lib/Position.o ../Battleship.GameController.Lib/Letters.o ../Battleship.GameController.Lib/GameController.o
@@ -30,7 +33,7 @@ Letters.o: ../Battleship.GameController.Lib/Letters.cpp ../Battleship.GameContro
 GameController.o: ../Battleship.GameController.Lib/GameController.cpp ../Battleship.GameController.Lib/GameController.h
 	$(CXX) $(CFLAGS) -c -o $@ $<
 
-TestRunner.exe: CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o
+TestRunner.exe: CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o Colours.o
 	$(CXX) $(CFLAGS) $^ -o $@ -L${CPPUNIT_PATH}/lib -lstdc++ -lcppunit -ldl
 
 CheckIsHitTests.o: ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.cpp ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.h GameController.o Ship.o Position.o Letters.o

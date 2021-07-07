@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "../Battleship.GameController.Lib/GameController.h"
+#include "Colours.h"
 
 #pragma comment(lib,"winmm.lib")  //for MSV C++   
 
@@ -37,6 +38,7 @@ namespace Battleship
 
     void Program::Main()
     {
+      cout << Colours::blue;
       cout << R"(                                     |__                                       )" << endl;
       cout << R"(                                     | \ /                                     )" << endl;
       cout << R"(                                     ---                                       )" << endl;
@@ -51,7 +53,7 @@ namespace Battleship
       cout << R"(|                        Welcome to Battleship                         BB-61/  )" << endl;
       cout << R"( \_________________________________________________________________________|   )" << endl;
       cout << endl;
-      cout << "\033[0m";
+      cout << Colours::colorEnd;
 
 	  InitializeGame();
 
@@ -61,6 +63,7 @@ namespace Battleship
     void Program::StartGame()
     {
       //Console::Clear();
+      cout << Colours::yellow;
       cout << R"(                  __     )" << endl;
       cout << R"(                 /  \    )" << endl;
       cout << R"(           .-.  |    |   )" << endl;
@@ -75,6 +78,7 @@ namespace Battleship
       do
       {
         cout << endl;
+        cout << Colours::yellow;
         cout << R"(Player, it's your turn   )" << endl;
 
 		bool PositionValid = false;
@@ -90,7 +94,7 @@ namespace Battleship
         if (isHit)
         {
             // Console::Beep();
-
+            cout << Colours::green;
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
             cout << R"(                  (M^^.^~~:.'"").       )" << endl;
@@ -100,10 +104,13 @@ namespace Battleship
             cout << R"(                 -\  \     /  /-        )" << endl;
             cout << R"(                   \  \   /  /          )" << endl;
 			cout << ("Yeah ! Nice hit !") << endl;
+			cout << Colours::colorEnd;
 		}
 		else
 		{
+		    cout << Colours::red;
 			cout << ("Miss") << endl;
+			cout << Colours::colorEnd;
 		}
 
         position = GetRandomPosition();
@@ -113,7 +120,7 @@ namespace Battleship
         if (isHit)
         {
             //Console::Beep();
-
+            cout << Colours::green;
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
             cout << R"(                  (M^^.^~~:.'"").       )" << endl;
@@ -124,10 +131,13 @@ namespace Battleship
             cout << R"(                   \  \   /  /          )" << endl;
 
 			cout << "(Computer shoot in " << position << " and " << "hit your ship !)" << endl;
+			cout << Colours::colorEnd;
         }
 		else
 		{
+		    cout << Colours::red;
 			cout << "(Computer shoot in " << position << " and missed )   " << endl;
+			cout << Colours::colorEnd;
 		}
       }
       while (true);
@@ -163,16 +173,20 @@ namespace Battleship
     // PRIVATE methods
     void Program::MessageYouWon()
     {
+        cout << Colours::yellow;
         cout << R"()" << endl;
         cout << R"(You are the winner!)" << endl;
         cout << R"()" << endl;
+        cout << Colours::colorEnd;
     }
 
     void Program::MessageYouLost()
     {
+        cout << Colours::yellow;
         cout << R"()" << endl;
         cout << R"(You Lost!)" << endl;
         cout << R"()" << endl;
+        cout << Colours::colorEnd;
     }
 
     void Program::InitializeGame()
@@ -186,7 +200,7 @@ namespace Battleship
 	{
 		myFleet = GameController::GameController::InitializeShips();
 
-		cout << "Please position your fleet (Game board has size from A to H and 1 to 8) :" << endl;
+		cout << Colours::yellow << "Please position your fleet (Game board has size from A to H and 1 to 8) :" << endl;
 		for_each(myFleet.begin(), myFleet.end(), [](Ship &ship)
 		{
 			cout << endl;
@@ -201,6 +215,7 @@ namespace Battleship
 				ship.AddPosition(inputPosition);
 			}
 		});
+		cout << Colours::colorEnd;
 	}
 
 	void Program::InitializeEnemyFleet(list<Ship>& Fleet)
