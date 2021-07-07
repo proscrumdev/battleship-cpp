@@ -1,7 +1,7 @@
 TARGET = Battleship.exe
 CPPUNIT_PATH=/usr/local/lib
 CXX = g++
-CXXFLAGS = ""
+CFLAGS =
 
 $(TARGET): Battleship.o Program.a GameController.a 
 	$(CXX) $(CFLAGS) $^ -o $@
