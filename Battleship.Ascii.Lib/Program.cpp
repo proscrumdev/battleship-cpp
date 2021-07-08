@@ -77,6 +77,8 @@ namespace Battleship
       cout << R"(   \    \_/              )" << endl;
       cout << R"(    """"""""             )" << endl;
 
+      bool endOfTheGame = false;
+
       do
       {
         cout << endl << endl;
@@ -125,6 +127,12 @@ namespace Battleship
 			cout << Colours::colorEnd;
 		}
 
+        endOfTheGame = IsEndOfTheGame();
+        if (endOfTheGame) {
+            MessageYouWon();
+            continue;
+        }
+
         position = GetRandomPosition();
         isHit = GameController::GameController::CheckIsHit(myFleet, position);
         cout << endl;
@@ -151,8 +159,14 @@ namespace Battleship
 			cout << "(Computer shoot in " << position << " and missed )   " << endl;
 			cout << Colours::colorEnd;
 		}
+
+        endOfTheGame = IsEndOfTheGame();
+        if (endOfTheGame) {
+            MessageYouLost();
+            continue;
+        }
       }
-      while (true);
+      while (!endOfTheGame);
     }
 
 	Position Program::ParsePosition(string &input)
@@ -210,6 +224,12 @@ namespace Battleship
         cout << R"(You Lost!)" << endl;
         cout << R"()" << endl;
         cout << Colours::colorEnd;
+    }
+
+    bool Program::IsEndOfTheGame()
+    {
+        //TODO we are waiting for info how to check that ship is dead
+        return false;
     }
 
     void Program::InitializeGame()
