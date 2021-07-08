@@ -33,6 +33,7 @@ namespace Battleship
 
       static void MessageYouWon();
       static void MessageYouLost();
+      static bool IsEndOfTheGame();
 
 	public:
 	  static Position ParsePosition(string input);
