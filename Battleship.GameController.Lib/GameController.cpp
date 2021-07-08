@@ -67,6 +67,17 @@ namespace Battleship
 	  Position position(lColumn, nRow);
 	  return position;
 	}
+
+	bool GameController::IsSunk(const Ship &ship)
+	{
+		bool isSunk = true;
+
+		for(auto pos = ship.Positions.begin(); pos != ship.Positions.end(); pos++)
+		{
+			isSunk &= pos->isHit;
+		}
+		return isSunk;
+	}
   }
 }
 

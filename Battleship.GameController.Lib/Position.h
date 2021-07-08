@@ -18,6 +18,7 @@ namespace Battleship
       public:
         Letters Column;
         int Row;
+        bool isHit;
 
       public:
         Position &operator=(const Position &rhs);

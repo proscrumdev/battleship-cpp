@@ -63,6 +63,9 @@ namespace Battleship
       /// The <see cref="Battleship::GameController::Contracts::Position"/>.
       /// </returns>
       static Position GetRandomPosition(int size);
+
+      static bool IsSunk(const Ship &ship);
+
     };
   }
 }
