@@ -159,7 +159,6 @@ namespace Battleship
     {
 	    // validate input string
 	    if (!std::isalpha(input.at(0)) || !std::isdigit(input.at(1))) {
-            cerr << __PRETTY_FUNCTION__ << ":" << __LINE__ << endl;
 	        throw std::invalid_argument("");
 	    }
 	    if (input.size() > 2) {
