@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
+#include <cctype>
+#include <stdexcept>
 
 #include "../Battleship.GameController.Lib/GameController.h"
 #include "Colours.h"
@@ -87,10 +89,18 @@ namespace Battleship
 		string input;
 		Position position;
 
-		cout << R"(Enter coordinates for your shot :   )" << endl;
-		getline(cin, input);
+        do {
+            cout << R"(Enter coordinates for your shot :   )" << endl;
+            getline(cin, input);
 
-		position = ParsePosition(input);
+            try {
+                position = ParsePosition(input);
+            } catch (...) {
+                cout << "Improper position. Try again. ";
+                continue;
+            }
+            break;
+        } while (true);
 
         bool isHit = GameController::GameController::CheckIsHit(enemyFleet, position);
         if (isHit)
@@ -145,15 +155,26 @@ namespace Battleship
       while (true);
     }
 
-	Position Program::ParsePosition(string input)
+	Position Program::ParsePosition(string &input)
     {
+	    // validate input string
+	    if (!std::isalpha(input.at(0)) || !std::isdigit(input.at(1))) {
+	        throw std::invalid_argument("");
+	    }
+	    if (input.size() > 2) {
+	        // all other characters should be digits
+	        for (size_t i = 2; i < input.size(); i++) {
+	            if (!std::isdigit(input.at(i))) {
+	                throw std::invalid_argument("");
+	            }
+	        }
+	    }
       char cColumn = toupper(input.at(0));
-      char cRow = input.at(1);
 
 	  int nColumn = (cColumn - 'A');
       Letters lColumn = (Letters)nColumn;
 
-      int nRow = cRow - '0';
+      int nRow = std::strtol(input.data() + 1, NULL, 10);
 
 	  Position outPosition;
 	  outPosition.Column = lColumn;
@@ -209,10 +230,19 @@ namespace Battleship
 			cout << "Please enter the positions for the " << ship.Name << " (size: " << ship.Size << ")" << endl;
 			for (int i = 1; i <= ship.Size; i++)
 			{
-        cout << "Enter position " << i << " of " << ship.Size << "\n";
-				string input;
-				getline(cin, input);
-				Position inputPosition = ParsePosition(input);
+                Position inputPosition;
+                do {
+                    cout << "Enter position " << i << " of " << ship.Size << "\n";
+                    string input;
+                    getline(cin, input);
+                    try {
+                        inputPosition = ParsePosition(input);
+                    } catch (...) {
+                        cout << "Improper position. Try again. ";
+                        continue;
+                    }
+                    break;
+                }while (true);
 
 				ship.AddPosition(inputPosition);
 			}
