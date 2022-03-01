@@ -118,15 +118,15 @@ namespace Battleship::Ascii
         {
           // Console::Beep();
 
-          std::cout << R"(                \         .  ./         )" << std::endl;
-          std::cout << R"(              \      .:"";'.:..""   /   )" << std::endl;
-          std::cout << R"(                  (M^^.^~~:.'"").       )" << std::endl;
-          std::cout << R"(            -   (/  .    . . \ \)  -    )" << std::endl;
-          std::cout << R"(               ((| :. ~ ^  :. .|))      )" << std::endl;
-          std::cout << R"(            -   (\- |  \ /  |  /)  -    )" << std::endl;
-          std::cout << R"(                 -\  \     /  /-        )" << std::endl;
-          std::cout << R"(                   \  \   /  /          )" << std::endl;
-          std::cout << rang::style::bold << rang::fg::red << ("Yeah! Nice hit!") << rang::style::reset << std::endl;
+          std::cout << rang::style::bold << rang::fg::red << "                \\         .  ./         " << std::endl;
+          std::cout << "              \\      .:"";'.:..""   /   " << std::endl;
+          std::cout << "                  (M^^.^~~:.'"").       " << std::endl;
+          std::cout << "            -   (/  .    . . \\ \\)  -    " << std::endl;
+          std::cout << "               ((| :. ~ ^  :. .|))      " << std::endl;
+          std::cout << "            -   (\\- |  \\ /  |  /)  -    " << std::endl;
+          std::cout << "                 -\\  \\     /  /-        " << std::endl;
+          std::cout << "                   \\  \\   /  /          " << std::endl;
+          std::cout << ("Yeah! Nice hit!") << rang::style::reset << std::endl;
         }
         else
         {
@@ -141,16 +141,15 @@ namespace Battleship::Ascii
         {
           // Console::Beep();
 
-          std::cout << R"(                \         .  ./         )" << std::endl;
-          std::cout << R"(              \      .:"";'.:..""   /   )" << std::endl;
-          std::cout << R"(                  (M^^.^~~:.'"").       )" << std::endl;
-          std::cout << R"(            -   (/  .    . . \ \)  -    )" << std::endl;
-          std::cout << R"(               ((| :. ~ ^  :. .|))      )" << std::endl;
-          std::cout << R"(            -   (\- |  \ /  |  /)  -    )" << std::endl;
-          std::cout << R"(                 -\  \     /  /-        )" << std::endl;
-          std::cout << R"(                   \  \   /  /          )" << std::endl;
-
-          std::cout << rang::style::bold << rang::fg::red << "Argh! Computer shoot in " << position << " and hit your ship!" << rang::style::reset << std::endl;
+          std::cout << rang::style::bold << rang::fg::red << "                \\         .  ./         " << std::endl;
+          std::cout << "              \\      .:"";'.:..""   /   " << std::endl;
+          std::cout << "                  (M^^.^~~:.'"").       " << std::endl;
+          std::cout << "            -   (/  .    . . \\ \\)  -    " << std::endl;
+          std::cout << "               ((| :. ~ ^  :. .|))      " << std::endl;
+          std::cout << "            -   (\\- |  \\ /  |  /)  -    " << std::endl;
+          std::cout << "                 -\\  \\     /  /-        " << std::endl;
+          std::cout << "                   \\  \\   /  /          " << std::endl;
+          std::cout << "Argh! Computer shoot in " << position << " and hit your ship!" << rang::style::reset << std::endl;
         }
         else
         {
