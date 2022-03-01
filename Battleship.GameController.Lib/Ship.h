@@ -2,6 +2,7 @@
 
 #include <string>
 #include <list>
+#include <vector>
 
 #include "Position.h"
 
@@ -44,7 +45,14 @@ namespace Battleship
 		/// </param>
 		void AddPosition(std::string input);
 		void AddPosition(const Position &input);
-	  };
+
+        bool hit(const Position& position);
+        bool is_sunk() const;
+
+      private:
+        std::vector<Position> hit_mapping;
+
+      };
 	}
   }
 }

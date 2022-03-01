@@ -11,34 +11,37 @@ namespace Battleship
   {
 	using namespace std;
 
-	GameController::GameController()
-	{
-	}
+    void print_enemy_status_after_sink(const std::list<Ship>& ships) {
+      for (const auto& ship : ships) {
+        const bool is_sunk = ship.is_sunk();
+        std::string sunk_str = "alive";
+        if (is_sunk) {
+          sunk_str = "sunk : positions was ";
+          for (const Position& pos : ship.Positions) {
+            sunk_str += pos.to_string() +  + ";";
+          }
+        }
 
-	GameController::~GameController()
-	{
-	}
+        std::cout << ship.Name << ": is " << sunk_str << "\n";
+      }
+    }
 
 	bool GameController::CheckIsHit(std::list<Ship> & ships, Position shot)
 	{
 	  if (&ships == nullptr)
 		throw std::invalid_argument(std::string("argument 'ships' is invalid"));
 
-	  auto shipFound = find_if(ships.begin(), ships.end(), [&shot](Ship &s)
-	  {
-		auto posFound = find_if(s.Positions.begin(), s.Positions.end(), [&shot](Position &p)
-		{
-			if (p == shot)
-			{
-				return true;
-			}
-
-			return false;
-		});
-		return posFound != s.Positions.end();
+	  auto shipFound = find_if(ships.begin(), ships.end(), [&shot](Ship &s) {
+		return s.hit(shot);
 	  });
 
-	  return shipFound != ships.end();
+      const bool has_hit = (shipFound != ships.end());
+      if (has_hit && shipFound->is_sunk()) {
+        std::cout << "Enemy Ship " << shipFound-> Name << " has been sunk\n";
+        print_enemy_status_after_sink(ships);
+      }
+
+	  return has_hit;
 	}
 
 	list<Ship> GameController::InitializeShips()

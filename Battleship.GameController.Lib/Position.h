@@ -22,6 +22,8 @@ namespace Battleship
       public:
         Position &operator=(const Position &rhs);
         bool operator==(const Position &rhs) const;
+
+        std::string to_string() const;
       };
     }
   }

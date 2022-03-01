@@ -11,11 +11,6 @@ namespace Battleship
     class GameController
     {
     public:
-      GameController();
-      ~GameController();
-
-	  // kommentieren
-	  static bool CheckFleet(std::list<Ship> & ships, bool enemy);
 
       /// <summary>
       /// Checks the is hit.
