@@ -9,7 +9,6 @@ namespace Battleship
 {
   namespace GameController
   {
-	using namespace std;
 
     void print_enemy_status_after_sink(const std::list<Ship>& ships) {
       for (const auto& ship : ships) {
@@ -44,9 +43,9 @@ namespace Battleship
 	  return has_hit;
 	}
 
-	list<Ship> GameController::InitializeShips()
+    std::list<Ship> GameController::InitializeShips()
 	{
-	  list<Ship> ships;
+      std::list<Ship> ships;
 	  ships.insert(ships.end(), Ship("Aircraft Carrier", 5));
 	  ships.insert(ships.end(), Ship("Battleship", 4));
 	  ships.insert(ships.end(), Ship("Submarine", 3));

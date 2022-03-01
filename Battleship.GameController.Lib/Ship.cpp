@@ -3,8 +3,6 @@
 
 #include "Ship.h"
 
-using namespace std;
-
 namespace Battleship::GameController::Contracts
 	{
 	  Ship::Ship()
@@ -19,7 +17,7 @@ namespace Battleship::GameController::Contracts
 	  {
 	  }
 
-	  void Ship::AddPosition(string input)
+	  void Ship::AddPosition(std::string input)
 	  {
 		char cColumn = toupper(input.at(0));
 		char cRow = input.at(1);  

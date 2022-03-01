@@ -4,7 +4,6 @@
 
 #include "../Battleship.GameController.Lib/Ship.h"
 
-using namespace std;
 using namespace Battleship::GameController::Contracts;
 
 namespace Battleship
@@ -14,8 +13,8 @@ namespace Battleship
 	class Program
 	{
 	private:
-	  static list<Ship> myFleet;
-	  static list<Ship> enemyFleet;
+	  static std::list<Ship> myFleet;
+	  static std::list<Ship> enemyFleet;
 
 	public:
 	  Program();
@@ -29,10 +28,10 @@ namespace Battleship
 	  static void InitializeGame();
 
 	  static void InitializeMyFleet();
-	  static void InitializeEnemyFleet(list<Ship> &Fleet);
+	  static void InitializeEnemyFleet(std::list<Ship> &Fleet);
 
 	public:
-	  static Position ParsePosition(string input);
+	  static Position ParsePosition(std::string input);
 	  static Position GetRandomPosition();
 	};
   }
