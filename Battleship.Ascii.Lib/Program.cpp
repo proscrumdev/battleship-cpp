@@ -133,7 +133,7 @@ namespace Battleship::Ascii
   void Program::InitializeShots()
   {
     for (int i = 0; i < 8; i++)
-      for (int j = 0; j < 8; j++)
+      for (int j = 1; j <= 8; j++)
       {
         Letters lColumn = (Letters)(i);
         shots_.push_back(Position(lColumn, j));
