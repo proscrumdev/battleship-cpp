@@ -75,13 +75,12 @@ namespace Battleship
       do
       {
         cout << endl;
-        cout << R"(Player, it's your turn   )" << endl;
+        cout << R"(Now it's your turn to shoot!)" << endl;
 
         bool PositionValid = false;
         string input;
         Position position;
-
-        cout << R"(Enter coordinates for your shot :   )" << endl;
+        cout << rang::style::bold << rang::fg::green << "Enter coordinates for your shot: " << rang::style::reset << endl;
         getline(cin, input);
 
         position = ParsePosition(input);
@@ -99,11 +98,11 @@ namespace Battleship
           cout << R"(            -   (\- |  \ /  |  /)  -    )" << endl;
           cout << R"(                 -\  \     /  /-        )" << endl;
           cout << R"(                   \  \   /  /          )" << endl;
-          cout << ("Yeah ! Nice hit !") << endl;
+          cout << rang::style::bold << rang::fg::red << ("Yeah! Nice hit!") << rang::style::reset << endl;
         }
         else
         {
-          cout << ("Miss") << endl;
+          cout << rang::style::bold << rang::fg::blue << ("Oh crap, you missed!") << rang::style::reset << endl;
         }
 
         position = GetRandomPosition();
@@ -123,12 +122,11 @@ namespace Battleship
           cout << R"(                 -\  \     /  /-        )" << endl;
           cout << R"(                   \  \   /  /          )" << endl;
 
-          cout << "(Computer shoot in " << position << " and "
-               << "hit your ship !)" << endl;
+          cout << rang::style::bold << rang::fg::red << "Argh! Computer shoot in " << position << " and hit your ship!" << rang::style::reset << endl;
         }
         else
         {
-          cout << "(Computer shoot in " << position << " and missed )   " << endl;
+          cout << rang::style::bold << rang::fg::blue << "Phew... Computer shoot in " << position << " and missed!" << rang::style::reset << endl;
         }
       } while (true);
     }
@@ -171,14 +169,14 @@ namespace Battleship
     {
       myFleet = GameController::GameController::InitializeShips();
 
-      cout << "Please position your fleet (Game board has size from A to H and 1 to 8) :" << endl;
+      cout << "Battleship is a strategy game where two opposing fleets fight to sink the other.\nThe sea is represented by a board divided in lines (1 to 8) and columns (A to H).\nFirst, let's position your fleet." << endl;
       for_each(myFleet.begin(), myFleet.end(), [](Ship &ship)
                {
 			cout << endl;
-			cout << "Please enter the positions for the " << ship.Name << " (size: " << ship.Size << ")" << endl;
+			cout << "The " << ship.Name << " has a size of " << ship.Size << " squares. Where do you want to place it? (coordinate example: B2)" << endl;
 			for (int i = 1; i <= ship.Size; i++)
 			{
-        cout << "Enter position " << i << " of " << ship.Size << "\n";
+        cout << rang::style::bold << rang::fg::green << "Coordinate of square " << i << " of " << ship.Size << ":\n" << rang::style::reset << endl;
 				string input;
 				getline(cin, input);
 				Position inputPosition = ParsePosition(input);
