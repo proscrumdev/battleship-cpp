@@ -1,12 +1,11 @@
-#include "Ship.h"
 #include <iostream>
+#include <algorithm>
+
+#include "Ship.h"
+
 using namespace std;
 
-namespace Battleship
-{
-  namespace GameController
-  {
-	namespace Contracts
+namespace Battleship::GameController::Contracts
 	{
 	  Ship::Ship()
 	  {
@@ -35,8 +34,29 @@ namespace Battleship
 	  {
 		  Positions.insert(Positions.begin(), inputPosition);
 	  }
-	}
-  }
+
+      bool Ship::hit(const Position& position) {
+        bool already_hit = std::any_of(this->hit_mapping.begin(), this->hit_mapping.end(), [&position](Position& hit_pos) {
+          return hit_pos == position;
+        });
+        if (already_hit) {
+          return false;
+        }
+
+        auto posFound = std::find_if(this->Positions.begin(), this->Positions.end(), [&position](Position& p) {
+          return (p == position);
+        });
+        const bool has_been_hit = posFound != this->Positions.end();
+        if (has_been_hit) {
+          this->hit_mapping.emplace_back(position);
+        }
+        return has_been_hit;
+      }
+
+      bool Ship::is_sunk() const {
+        return this->hit_mapping.size() == this->Positions.size();
+      }
+
 }
 
 

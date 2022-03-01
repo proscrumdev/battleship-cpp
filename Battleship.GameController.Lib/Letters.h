@@ -1,10 +1,6 @@
 #pragma once
 
-namespace Battleship
-{
-  namespace GameController
-  {
-    namespace Contracts
+namespace Battleship::GameController::Contracts
     {
       enum Letters
       {
@@ -17,7 +13,7 @@ namespace Battleship
         G,
         H
       };
+
+      std::string to_string(Letters l);
     }
-  }
-}
 

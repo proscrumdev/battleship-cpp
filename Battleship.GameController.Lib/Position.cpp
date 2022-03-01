@@ -1,10 +1,8 @@
+#include <string>
 #include "Position.h"
+#include "Letters.h"
 
-namespace Battleship
-{
-  namespace GameController
-  {
-    namespace Contracts
+namespace Battleship::GameController::Contracts
     {
       Position::Position(Letters column, int row) : Column(column), Row(row)
       {
@@ -14,9 +12,7 @@ namespace Battleship
       {
       }
 
-      Position::~Position()
-      {
-      }
+      Position::~Position() = default;
 
       Position &Position::operator=(const Position &rhs)
       {
@@ -30,7 +26,10 @@ namespace Battleship
       {
         return (Column == rhs.Column) && (Row == rhs.Row);
       }
+
+    std::string Position::to_string() const {
+      return Battleship::GameController::Contracts::to_string(Column) + std::to_string(Row);
     }
-  }
-}
+
+    }
 
