@@ -1,15 +1,15 @@
-#include "ParsePositionTests.h"
-
 #include <stdlib.h>
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
 
+#include "ParsePositionTests.h"
+
 CPPUNIT_TEST_SUITE_REGISTRATION (ParsePositionTests);
 
 void ParsePositionTests :: ParsePositionTest(void)
 {      
-	string input = "a1";
+	std::string input = "a1";
 	Position expected(Letters::A, 1);
 	Position result = Program::ParsePosition(input);
             
