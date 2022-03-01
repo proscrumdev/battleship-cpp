@@ -24,7 +24,7 @@ private:
 	  static void InitializeEnemyFleet(std::list<Ship> &Fleet);
 
 	public:
-	  static Position ParsePosition(std::string input);
+	  static std::optional<Position> ParsePosition(std::string input);
 	  static Position GetRandomPosition();
 };
 

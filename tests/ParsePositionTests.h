@@ -11,8 +11,10 @@ class ParsePositionTests : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (ParsePositionTests);
     CPPUNIT_TEST (ParsePositionTest);
+    CPPUNIT_TEST (ParsePositionNoneTest);
     CPPUNIT_TEST_SUITE_END ();
 
     protected:
-        void ParsePositionTest (void);
+      void ParsePositionTest (void);
+      void ParsePositionNoneTest (void);
 };

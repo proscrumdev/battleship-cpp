@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
+#include <optional>
 #include "rang/rang.h"
 #include "../Battleship.GameController.Lib/GameController.h"
 
@@ -160,6 +161,9 @@ namespace Battleship::Ascii
 
 	std::optional<Position> Program::ParsePosition(std::string input)
     {
+      if (input.size() != 2) {
+        return std::nullopt;
+      }
       char cColumn = std::toupper(input.at(0));
       char cRow = input.at(1);
 
