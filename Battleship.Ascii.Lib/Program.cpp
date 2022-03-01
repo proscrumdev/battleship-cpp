@@ -34,6 +34,24 @@ namespace Battleship
     list<Ship> Program::myFleet;
     list<Ship> Program::enemyFleet;
 
+    bool continue_game(const std::list<Ship>& my_fleet_ships, const std::list<Ship>& enemy_fleet_ships) {
+      auto check_destruction = [](const Ship& ship) {
+        return ship.is_sunk();
+      };
+
+      if (std::all_of(my_fleet_ships.begin(), my_fleet_ships.end(), check_destruction)) {
+        std::cout << "You Lose.\n";
+        return false;
+      }
+
+      if (std::all_of(enemy_fleet_ships.begin(), enemy_fleet_ships.end(), check_destruction)) {
+        std::cout << "You Win.\n";
+        return false;
+      }
+
+      return true;
+    }
+
     void Program::Main()
     {
       cout << R"(                                     |__                                       )" << endl;
@@ -74,7 +92,7 @@ namespace Battleship
 
       do
       {
-        cout << endl;
+        cout << "\n";
         cout << R"(Now it's your turn to shoot!)" << endl;
 
         bool PositionValid = false;
@@ -128,7 +146,7 @@ namespace Battleship
         {
           cout << rang::style::bold << rang::fg::blue << "Phew... Computer shoot in " << position << " and missed!" << rang::style::reset << endl;
         }
-      } while (true);
+      } while (continue_game(myFleet, enemyFleet));
     }
 
     Position Program::ParsePosition(string input)
