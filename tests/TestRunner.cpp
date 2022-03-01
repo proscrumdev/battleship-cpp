@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include <cstring>
 
-using namespace std;
-
 int main (int argc, char* argv[])
 {
     // Informiert Test-Listener ueber Testresultate

@@ -5,7 +5,6 @@
 #include "../Battleship.Ascii.Lib/Program.h"
 #include "../Battleship.GameController.Lib/GameController.h"
 
-using namespace std;
 using namespace Battleship::Ascii;
 
 class ParsePositionTests : public CPPUNIT_NS :: TestFixture

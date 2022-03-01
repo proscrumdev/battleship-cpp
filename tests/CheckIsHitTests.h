@@ -4,7 +4,6 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include "../Battleship.GameController.Lib/GameController.h"
 
-using namespace std;
 using namespace Battleship::GameController;
 using namespace Battleship::GameController::Contracts;
 
