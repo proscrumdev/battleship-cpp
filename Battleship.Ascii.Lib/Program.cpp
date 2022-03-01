@@ -13,22 +13,35 @@
 using namespace Battleship::GameController;
 using namespace Battleship::GameController::Contracts;
 
-namespace Battleship
-{
-  namespace Ascii
+namespace Battleship::Ascii
   {
+
+    Position retrieve_user_position() {
+
+      std::string input;
+
+      std::getline(std::cin, input);
+      if (std::cin.eof()) {
+        std::cout << "exit game\n";
+        exit(0);
+      }
+
+      if (input.empty()) {
+        return retrieve_user_position();
+      }
+      auto inputPosition = Program::ParsePosition(input);
+
+      if (!inputPosition) {
+        std::cerr << "Provided position is wrong, please enter a coordinate between 1 and 8 (and A to H)\n";
+        return retrieve_user_position();
+      }
+      return inputPosition.value();
+    }
+
     std::ostream &operator<<(std::ostream &out, Position pos)
     {
       out << (char)('A' + pos.Column) << pos.Row;
       return out;
-    }
-
-    Program::Program()
-    {
-    }
-
-    Program::~Program()
-    {
     }
 
     std::list<Ship> Program::myFleet;
@@ -92,17 +105,12 @@ namespace Battleship
 
       do
       {
-
-        std::cout << std::endl;
-        std::cout << R"(Now it's your turn to shoot!)" << std::endl;
-
-        bool PositionValid = false;
-        std::string input;
-        Position position;
+        std::cout << "\n";
+        std::cout << R"(Player, it's your turn   )" << std::endl;
         std::cout << rang::style::bold << rang::fg::green << "Enter coordinates for your shot: " << rang::style::reset << std::endl;
-        getline(std::cin, input);
+        std::cout << R"(Enter coordinates for your shot :   )" << std::endl;
 
-        position = ParsePosition(input);
+        Position position = retrieve_user_position();
 
         bool isHit = GameController::GameController::CheckIsHit(enemyFleet, position);
         if (isHit)
@@ -150,20 +158,23 @@ namespace Battleship
       } while (continue_game(myFleet, enemyFleet));
     }
 
-    Position Program::ParsePosition(std::string input)
+	std::optional<Position> Program::ParsePosition(std::string input)
     {
       char cColumn = std::toupper(input.at(0));
       char cRow = input.at(1);
 
-      int nColumn = (cColumn - 'A');
-      Letters lColumn = (Letters)nColumn;
-
       int nRow = cRow - '0';
 
-      Position outPosition;
-      outPosition.Column = lColumn;
-      outPosition.Row = nRow;
-      return outPosition;
+      if (nRow < 1 || nRow > 8 || cColumn < 'A' || cColumn > 'H') {
+        return std::nullopt;
+      }
+
+      int nColumn = (cColumn - 'A');
+
+	  Position outPosition;
+	  outPosition.Column = static_cast<Letters>(nColumn);
+	  outPosition.Row = nRow;
+	  return outPosition;
     }
 
     Position Program::GetRandomPosition()
@@ -195,14 +206,11 @@ namespace Battleship
 			std::cout << "The " << ship.Name << " has a size of " << ship.Size << " squares. Where do you want to place it? (coordinate example: B2)" << std::endl;
 			for (int i = 1; i <= ship.Size; i++)
 			{
-        std::cout << rang::style::bold << rang::fg::green << "Coordinate of square " << i << " of " << ship.Size << ":\n" << rang::style::reset << std::endl;
-                std::string input;
-				getline(std::cin, input);
-				Position inputPosition = ParsePosition(input);
-
-				ship.AddPosition(inputPosition);
-			} });
-    }
+              std::cout << rang::style::bold << rang::fg::green << "Coordinate of square " << i << " of " << ship.Size << ":\n" << rang::style::reset << std::endl;
+              ship.AddPosition(retrieve_user_position());
+			}
+		});
+	}
 
     void Program::InitializeEnemyFleet(std::list<Ship> &Fleet)
     {
@@ -244,4 +252,3 @@ namespace Battleship
 			} });
     }
   }
-}
