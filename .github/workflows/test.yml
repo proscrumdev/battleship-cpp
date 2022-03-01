@@ -1,0 +1,24 @@
+name: Run the Unit Tests
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  unittests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt install -y cmake libcppunit-dev
+
+      - name: Build and Test
+        run: |
+          mkdir build
+          cd build
+          cmake -DNAVY_TESTS=ON ..
+          make
+          make test
