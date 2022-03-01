@@ -3,7 +3,6 @@
 
 #include "..\Battleship.GameController.Lib\GameController.h"
 
-using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 using namespace Battleship::GameController::Contracts;
@@ -24,10 +23,10 @@ namespace Battleship
         /// </summary>
         TEST_METHOD(ShouldHitTheShip)
         {
-          list<Ship> ships = GameController::InitializeShips();
+          std::list<Ship> ships = GameController::InitializeShips();
 
           int counter = 0;
-          for_each(ships.begin(), ships.end(), [&counter](Ship &ship)
+          std::for_each(ships.begin(), ships.end(), [&counter](Ship &ship)
           {
             Letters letter = (Letters)counter;
             for (int i = 0; i < ship.Size; i++)
@@ -45,10 +44,10 @@ namespace Battleship
         /// </summary>
         TEST_METHOD(ShouldNotHitTheShip)
         {
-          list<Ship> ships = GameController::InitializeShips();
+          std::list<Ship> ships = GameController::InitializeShips();
 
           int counter = 0;
-          for_each(ships.begin(), ships.end(), [&counter](Ship &ship)
+          std::for_each(ships.begin(), ships.end(), [&counter](Ship &ship)
           {
             Letters letter = (Letters)counter;
             for (int i = 0; i < ship.Size; i++)
@@ -68,7 +67,7 @@ namespace Battleship
         {
           Assert::ExpectException<std::invalid_argument &>([]()
           {
-            list<Ship> &ships = *((list<Ship> *) nullptr);
+            std::list<Ship> &ships = *((std::list<Ship> *) nullptr);
             GameController::CheckIsHit(ships, Position(Letters::H, 1));
           });
         }

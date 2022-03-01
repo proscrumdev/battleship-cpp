@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include <cstring>
 
-using namespace std;
-
 int main (int argc, char* argv[])
 {
     // Informiert Test-Listener ueber Testresultate
@@ -31,7 +29,7 @@ int main (int argc, char* argv[])
 
     if (argc == 2 && strcmp(argv[1],"XML") == 0)
     {
-        ofstream xmlFileOut("cpptestresults.xml");
+        std::ofstream xmlFileOut("cpptestresults.xml");
         CPPUNIT_NS :: XmlOutputter xmlOutputter (&collectedresults, xmlFileOut);
         xmlOutputter.write ();
     }

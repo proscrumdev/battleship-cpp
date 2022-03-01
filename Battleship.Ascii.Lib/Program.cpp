@@ -17,7 +17,7 @@ namespace Battleship
 {
   namespace Ascii
   {
-    ostream &operator<<(ostream &out, Position pos)
+    std::ostream &operator<<(std::ostream &out, Position pos)
     {
       out << (char)('A' + pos.Column) << pos.Row;
       return out;
@@ -31,8 +31,8 @@ namespace Battleship
     {
     }
 
-    list<Ship> Program::myFleet;
-    list<Ship> Program::enemyFleet;
+    std::list<Ship> Program::myFleet;
+    std::list<Ship> Program::enemyFleet;
 
     bool continue_game(const std::list<Ship>& my_fleet_ships, const std::list<Ship>& enemy_fleet_ships) {
       auto check_destruction = [](const Ship& ship) {
@@ -54,22 +54,22 @@ namespace Battleship
 
     void Program::Main()
     {
-      cout << R"(                                     |__                                       )" << endl;
-      cout << R"(                                     | \ /                                     )" << endl;
-      cout << R"(                                     ---                                       )" << endl;
-      cout << R"(                                     / | [                                     )" << endl;
-      cout << R"(                              !      | |||                                     )" << endl;
-      cout << R"(                            _/|     _/|-++'                                    )" << endl;
-      cout << R"(                        +  +--|    |--|--|_ |-                                 )" << endl;
-      cout << R"(                     { /|__|  |/\__|  |--- |||__/                              )" << endl;
-      cout << R"(                    +---------------___[}-_===_.'____                 /\       )" << endl;
-      cout << R"(                ____`-' ||___-{]_| _[}-  |     |_[___\==--            \/    _  )" << endl;
-      cout << R"( __..._____--==/___]_|__|_____________________________[___\==--____,------' .7 )" << endl;
-      cout << "(|                        " << rang::style::bold << rang::fg::blue << "Welcome to Battleship                      "
-           << rang::style::reset << "BB-61/  )" << endl;
-      cout << R"( \_________________________________________________________________________|   )" << endl;
-      cout << endl;
-      cout << "\033[0m";
+      std::cout << R"(                                     |__                                       )" << std::endl;
+      std::cout << R"(                                     | \ /                                     )" << std::endl;
+      std::cout << R"(                                     ---                                       )" << std::endl;
+      std::cout << R"(                                     / | [                                     )" << std::endl;
+      std::cout << R"(                              !      | |||                                     )" << std::endl;
+      std::cout << R"(                            _/|     _/|-++'                                    )" << std::endl;
+      std::cout << R"(                        +  +--|    |--|--|_ |-                                 )" << std::endl;
+      std::cout << R"(                     { /|__|  |/\__|  |--- |||__/                              )" << std::endl;
+      std::cout << R"(                    +---------------___[}-_===_.'____                 /\       )" << std::endl;
+      std::cout << R"(                ____`-' ||___-{]_| _[}-  |     |_[___\==--            \/    _  )" << std::endl;
+      std::cout << R"( __..._____--==/___]_|__|_____________________________[___\==--____,------' .7 )" << std::endl;
+      std::cout << "(|                        " << rang::style::bold << rang::fg::blue << "Welcome to Battleship                      "
+           << rang::style::reset << "BB-61/  )" << std::endl;
+      std::cout << R"( \_________________________________________________________________________|   )" << std::endl;
+      std::cout << std::endl;
+      std::cout << "\033[0m";
 
       InitializeGame();
 
@@ -79,27 +79,28 @@ namespace Battleship
     void Program::StartGame()
     {
       // Console::Clear();
-      cout << R"(                  __     )" << endl;
-      cout << R"(                 /  \    )" << endl;
-      cout << R"(           .-.  |    |   )" << endl;
-      cout << R"(   *    _.-'  \  \__/    )" << endl;
-      cout << R"(    \.-'       \         )" << endl;
-      cout << R"(   /          _/         )" << endl;
-      cout << R"(  |      _  /""          )" << endl;
-      cout << R"(  |     /_\'             )" << endl;
-      cout << R"(   \    \_/              )" << endl;
-      cout << R"(    """"""""             )" << endl;
+      std::cout << R"(                  __     )" << std::endl;
+      std::cout << R"(                 /  \    )" << std::endl;
+      std::cout << R"(           .-.  |    |   )" << std::endl;
+      std::cout << R"(   *    _.-'  \  \__/    )" << std::endl;
+      std::cout << R"(    \.-'       \         )" << std::endl;
+      std::cout << R"(   /          _/         )" << std::endl;
+      std::cout << R"(  |      _  /""          )" << std::endl;
+      std::cout << R"(  |     /_\'             )" << std::endl;
+      std::cout << R"(   \    \_/              )" << std::endl;
+      std::cout << R"(    """"""""             )" << std::endl;
 
       do
       {
-        cout << "\n";
-        cout << R"(Now it's your turn to shoot!)" << endl;
+
+        std::cout << std::endl;
+        std::cout << R"(Now it's your turn to shoot!)" << std::endl;
 
         bool PositionValid = false;
-        string input;
+        std::string input;
         Position position;
-        cout << rang::style::bold << rang::fg::green << "Enter coordinates for your shot: " << rang::style::reset << endl;
-        getline(cin, input);
+        std::cout << rang::style::bold << rang::fg::green << "Enter coordinates for your shot: " << rang::style::reset << std::endl;
+        getline(std::cin, input);
 
         position = ParsePosition(input);
 
@@ -108,50 +109,50 @@ namespace Battleship
         {
           // Console::Beep();
 
-          cout << R"(                \         .  ./         )" << endl;
-          cout << R"(              \      .:"";'.:..""   /   )" << endl;
-          cout << R"(                  (M^^.^~~:.'"").       )" << endl;
-          cout << R"(            -   (/  .    . . \ \)  -    )" << endl;
-          cout << R"(               ((| :. ~ ^  :. .|))      )" << endl;
-          cout << R"(            -   (\- |  \ /  |  /)  -    )" << endl;
-          cout << R"(                 -\  \     /  /-        )" << endl;
-          cout << R"(                   \  \   /  /          )" << endl;
-          cout << rang::style::bold << rang::fg::red << ("Yeah! Nice hit!") << rang::style::reset << endl;
+          std::cout << R"(                \         .  ./         )" << std::endl;
+          std::cout << R"(              \      .:"";'.:..""   /   )" << std::endl;
+          std::cout << R"(                  (M^^.^~~:.'"").       )" << std::endl;
+          std::cout << R"(            -   (/  .    . . \ \)  -    )" << std::endl;
+          std::cout << R"(               ((| :. ~ ^  :. .|))      )" << std::endl;
+          std::cout << R"(            -   (\- |  \ /  |  /)  -    )" << std::endl;
+          std::cout << R"(                 -\  \     /  /-        )" << std::endl;
+          std::cout << R"(                   \  \   /  /          )" << std::endl;
+          std::cout << rang::style::bold << rang::fg::red << ("Yeah! Nice hit!") << rang::style::reset << std::endl;
         }
         else
         {
-          cout << rang::style::bold << rang::fg::blue << ("Oh crap, you missed!") << rang::style::reset << endl;
+          std::cout << rang::style::bold << rang::fg::blue << ("Oh crap, you missed!") << rang::style::reset << std::endl;
         }
 
         position = GetRandomPosition();
         isHit = GameController::GameController::CheckIsHit(myFleet, position);
-        cout << endl;
+        std::cout << std::endl;
 
         if (isHit)
         {
           // Console::Beep();
 
-          cout << R"(                \         .  ./         )" << endl;
-          cout << R"(              \      .:"";'.:..""   /   )" << endl;
-          cout << R"(                  (M^^.^~~:.'"").       )" << endl;
-          cout << R"(            -   (/  .    . . \ \)  -    )" << endl;
-          cout << R"(               ((| :. ~ ^  :. .|))      )" << endl;
-          cout << R"(            -   (\- |  \ /  |  /)  -    )" << endl;
-          cout << R"(                 -\  \     /  /-        )" << endl;
-          cout << R"(                   \  \   /  /          )" << endl;
+          std::cout << R"(                \         .  ./         )" << std::endl;
+          std::cout << R"(              \      .:"";'.:..""   /   )" << std::endl;
+          std::cout << R"(                  (M^^.^~~:.'"").       )" << std::endl;
+          std::cout << R"(            -   (/  .    . . \ \)  -    )" << std::endl;
+          std::cout << R"(               ((| :. ~ ^  :. .|))      )" << std::endl;
+          std::cout << R"(            -   (\- |  \ /  |  /)  -    )" << std::endl;
+          std::cout << R"(                 -\  \     /  /-        )" << std::endl;
+          std::cout << R"(                   \  \   /  /          )" << std::endl;
 
-          cout << rang::style::bold << rang::fg::red << "Argh! Computer shoot in " << position << " and hit your ship!" << rang::style::reset << endl;
+          std::cout << rang::style::bold << rang::fg::red << "Argh! Computer shoot in " << position << " and hit your ship!" << rang::style::reset << std::endl;
         }
         else
         {
-          cout << rang::style::bold << rang::fg::blue << "Phew... Computer shoot in " << position << " and missed!" << rang::style::reset << endl;
+          std::cout << rang::style::bold << rang::fg::blue << "Phew... Computer shoot in " << position << " and missed!" << rang::style::reset << std::endl;
         }
       } while (continue_game(myFleet, enemyFleet));
     }
 
-    Position Program::ParsePosition(string input)
+    Position Program::ParsePosition(std::string input)
     {
-      char cColumn = toupper(input.at(0));
+      char cColumn = std::toupper(input.at(0));
       char cRow = input.at(1);
 
       int nColumn = (cColumn - 'A');
@@ -187,23 +188,23 @@ namespace Battleship
     {
       myFleet = GameController::GameController::InitializeShips();
 
-      cout << "Battleship is a strategy game where two opposing fleets fight to sink the other.\nThe sea is represented by a board divided in lines (1 to 8) and columns (A to H).\nFirst, let's position your fleet." << endl;
+      std::cout << "Battleship is a strategy game where two opposing fleets fight to sink the other.\nThe sea is represented by a board divided in lines (1 to 8) and columns (A to H).\nFirst, let's position your fleet." << std::endl;
       for_each(myFleet.begin(), myFleet.end(), [](Ship &ship)
                {
-			cout << endl;
-			cout << "The " << ship.Name << " has a size of " << ship.Size << " squares. Where do you want to place it? (coordinate example: B2)" << endl;
+			std::cout << std::endl;
+			std::cout << "The " << ship.Name << " has a size of " << ship.Size << " squares. Where do you want to place it? (coordinate example: B2)" << std::endl;
 			for (int i = 1; i <= ship.Size; i++)
 			{
-        cout << rang::style::bold << rang::fg::green << "Coordinate of square " << i << " of " << ship.Size << ":\n" << rang::style::reset << endl;
-				string input;
-				getline(cin, input);
+        std::cout << rang::style::bold << rang::fg::green << "Coordinate of square " << i << " of " << ship.Size << ":\n" << rang::style::reset << std::endl;
+                std::string input;
+				getline(std::cin, input);
 				Position inputPosition = ParsePosition(input);
 
 				ship.AddPosition(inputPosition);
 			} });
     }
 
-    void Program::InitializeEnemyFleet(list<Ship> &Fleet)
+    void Program::InitializeEnemyFleet(std::list<Ship> &Fleet)
     {
       Fleet = GameController::GameController::InitializeShips();
 
