@@ -1,5 +1,9 @@
 #pragma once
-
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <algorithm>
 #include <list>
 
 #include "../Battleship.GameController.Lib/Ship.h"

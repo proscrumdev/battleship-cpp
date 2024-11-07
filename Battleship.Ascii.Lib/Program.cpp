@@ -1,14 +1,6 @@
 #include "Program.h"
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <algorithm>
-
 #include "../Battleship.GameController.Lib/GameController.h"
-
-#pragma comment(lib,"winmm.lib")  //for MSV C++   
 
 using namespace Battleship::GameController;
 using namespace Battleship::GameController::Contracts;
@@ -52,7 +44,7 @@ namespace Battleship
       cout << endl;
       cout << "\033[0m";
 
-	  InitializeGame();
+   InitializeGame();
 
       StartGame();
     }
@@ -88,7 +80,7 @@ namespace Battleship
         bool isHit = GameController::GameController::CheckIsHit(enemyFleet, position);
         if (isHit)
         {
-            // Console::Beep();
+            cout << "\a";
 
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
@@ -111,7 +103,7 @@ namespace Battleship
 
         if (isHit)
         {
-            //Console::Beep();
+            cout << "\a";
 
 			cout << R"(                \         .  ./         )" << endl;
             cout << R"(              \      .:"";'.:..""   /   )" << endl;
@@ -122,11 +114,11 @@ namespace Battleship
             cout << R"(                 -\  \     /  /-        )" << endl;
             cout << R"(                   \  \   /  /          )" << endl;
 
-			cout << "(Computer shoot in " << position << " and " << "hit your ship !)" << endl;
+			cout << "Computer shoot in " << position << " and " << "hit your ship !" << endl;
         }
 		else
 		{
-			cout << "(Computer shoot in " << position << " and missed )   " << endl;
+			cout << "Computer shoot in " << position << " and missed   " << endl;
 		}
       }
       while (true);
@@ -137,15 +129,15 @@ namespace Battleship
       char cColumn = toupper(input.at(0));
       char cRow = input.at(1);
 
-	  int nColumn = (cColumn - 'A');
+   int nColumn = (cColumn - 'A');
       Letters lColumn = (Letters)nColumn;
 
       int nRow = cRow - '0';
 
-	  Position outPosition;
-	  outPosition.Column = lColumn;
-	  outPosition.Row = nRow;
-	  return outPosition;
+   Position outPosition;
+   outPosition.Column = lColumn;
+   outPosition.Row = nRow;
+   return outPosition;
     }
 
     Position Program::GetRandomPosition()

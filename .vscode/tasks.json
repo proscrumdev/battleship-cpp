@@ -1,0 +1,65 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "label": "g++ build makefile",
+        "command": "make",
+        "args": [
+          "-C",
+          "${workspaceFolder}/MAKE"
+        ],
+        "options": {
+          "cwd": "/usr/bin"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "type": "shell",
+        "label": "Battleship",
+        "command": "${workspaceFolder}/MAKE/Battleship.exe",
+        "dependsOn": "g++ build makefile",
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "type": "shell",
+        "label": "g++ build TestRunner",
+        "command": "make",
+        "args": [
+          "-C",
+          "${workspaceFolder}/MAKE",
+          "TestRunner.exe"
+        ],
+        "options": {
+          "cwd": "/usr/bin"
+        },
+        "group": {
+          "kind": "test",
+          "isDefault": false
+        },
+        "problemMatcher": []
+      },
+      {
+        "type": "shell",
+        "label": "Battleship Tests",
+        "command": "${workspaceFolder}/MAKE/TestRunner.exe",
+        "dependsOn": "g++ build TestRunner",
+        "problemMatcher": [],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        },
+      }
+    ]
+}
