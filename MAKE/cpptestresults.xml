@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<TestRun>
+  <FailedTests></FailedTests>
+  <SuccessfulTests>
+    <Test id="1">
+      <Name>CheckIsHitTests::ShouldHitTheShip</Name>
+    </Test>
+    <Test id="2">
+      <Name>CheckIsHitTests::ShouldNotHitTheShip</Name>
+    </Test>
+    <Test id="3">
+      <Name>CheckIsHitTests::ThrowExceptionIfShipIsNull</Name>
+    </Test>
+    <Test id="4">
+      <Name>IsShipValidTests::ShipIsValid</Name>
+    </Test>
+    <Test id="5">
+      <Name>IsShipValidTests::ShipIsNotValid</Name>
+    </Test>
+    <Test id="6">
+      <Name>ParsePositionTests::ParsePositionTest</Name>
+    </Test>
+  </SuccessfulTests>
+  <Statistics>
+    <Tests>6</Tests>
+    <FailuresTotal>0</FailuresTotal>
+    <Errors>0</Errors>
+    <Failures>0</Failures>
+  </Statistics>
+</TestRun>
