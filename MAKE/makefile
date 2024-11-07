@@ -30,16 +30,13 @@ Letters.o: ../Battleship.GameController.Lib/Letters.cpp ../Battleship.GameContro
 GameController.o: ../Battleship.GameController.Lib/GameController.cpp ../Battleship.GameController.Lib/GameController.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-TestRunner.exe: IsHorizontalVerticalTests.o CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o
+TestRunner.exe: CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ -L${CPPUNIT_PATH}/lib -lstdc++ -lcppunit -ldl
 
 CheckIsHitTests.o: ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.cpp ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.h GameController.o Ship.o Position.o Letters.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
 
 IsShipValidTests.o: ../Battleship.GameController.Tests.CppUnit/IsShipValidTests.cpp ../Battleship.GameController.Tests.CppUnit/IsShipValidTests.h GameController.o Ship.o Position.o Letters.o
-	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
-
-IsHorizontalVerticalTests.o: ../Battleship.GameController.Tests.CppUnit/IsHorizontalVerticalTests.cpp ../Battleship.GameController.Tests.CppUnit/IsHorizontalVerticalTests.h GameController.o Ship.o Position.o Letters.o
 	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
 
 ParsePositionTests.o: ../Battleship.Ascii.Tests.CppUnit/ParsePositionTests.cpp ../Battleship.Ascii.Tests.CppUnit/ParsePositionTests.h GameController.o Ship.o Position.o Letters.o Program.o
