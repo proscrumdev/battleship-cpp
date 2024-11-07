@@ -60,6 +60,23 @@
           "kind": "test",
           "isDefault": true
         },
+      },      
+      {
+        "type": "shell",
+        "label": "g++ clean",
+        "command": "make",
+        "args": [
+          "clean",
+          "${workspaceFolder}/MAKE"
+        ],
+        "options": {
+          "cwd": "/usr/bin"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "problemMatcher": []
       }
     ]
 }
