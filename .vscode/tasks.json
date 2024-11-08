@@ -1,83 +1,85 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
+  "version": "2.0.0",
+  "tasks": [
       {
-        "type": "shell",
-        "label": "g++ build makefile",
-        "command": "make",
-        "args": [
-          "-C",
-          "${workspaceFolder}/MAKE"
-        ],
-        "options": {
-          "cwd": "/usr/bin"
-        },
-        "group": {
-          "kind": "build",
-          "isDefault": false
-        }
+          "type": "shell",
+          "label": "CMake Configure",
+          "command": "cmake",
+          "args": [
+              "-S",
+              "${workspaceFolder}",
+              "-B",
+              "${workspaceFolder}/build"
+          ],
+          "group": {
+              "kind": "build",
+              "isDefault": false
+          },
+          "problemMatcher": []
       },
       {
-        "type": "shell",
-        "label": "Battleship",
-        "command": "${workspaceFolder}/MAKE/Battleship.exe",
-        "dependsOn": "g++ build makefile",
-        "problemMatcher": [
-          "$gcc"
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
+          "type": "shell",
+          "label": "CMake Build",
+          "command": "cmake",
+          "args": [
+              "--build",
+              "${workspaceFolder}/build"
+          ],
+          "dependsOn": "CMake Configure",
+          "group": {
+              "kind": "build",
+              "isDefault": false
+          },
+          "problemMatcher": [
+              "$gcc"
+          ]
       },
       {
-        "type": "shell",
-        "label": "g++ build TestRunner",
-        "command": "make",
-        "args": [
-          "-C",
-          "${workspaceFolder}/MAKE",
-          "TestRunner.exe"
-        ],
-        "options": {
-          "cwd": "/usr/bin"
-        },
-        "group": {
-          "kind": "test",
-          "isDefault": false
-        },
-        "problemMatcher": []
+          "type": "shell",
+          "label": "Run Battleship",
+          "command": "${workspaceFolder}/build/Battleship",
+          "dependsOn": "CMake Build",
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "problemMatcher": []
       },
       {
-        "type": "shell",
-        "label": "Battleship Tests",
-        "command": "${workspaceFolder}/MAKE/TestRunner.exe",
-        "dependsOn": "g++ build TestRunner",
-        "problemMatcher": [],
-        "group": {
-          "kind": "test",
-          "isDefault": true
-        },
-      },      
+          "type": "shell",
+          "label": "CMake Build TestRunner",
+          "command": "cmake",
+          "args": [
+              "--build",
+              "${workspaceFolder}/build",
+              "--target",
+              "TestRunner"
+          ],
+          "dependsOn": "CMake Configure",
+          "group": {
+              "kind": "test",
+              "isDefault": false
+          },
+          "problemMatcher": []
+      },
       {
-        "type": "shell",
-        "label": "g++ clean",
-        "command": "make",
-        "args": [
-          "clean",
-          "-C",
-          "${workspaceFolder}/MAKE"
-        ],
-        "options": {
-          "cwd": "/usr/bin"
-        },
-        "group": {
-          "kind": "build",
-          "isDefault": false
-        },
-        "problemMatcher": []
+          "type": "shell",
+          "label": "CMake Execute TestRunner",
+          "command": "ctest",
+          "args": [
+            "-C",
+            "Debug",
+            "--test-dir",
+            "${workspaceFolder}/build",
+            "-V"
+          ],
+          "dependsOn": "CMake Build TestRunner",
+          "group": {
+              "kind": "test",
+              "isDefault": true
+          },
+          "problemMatcher": []
       }
-    ]
+
+  ]
 }

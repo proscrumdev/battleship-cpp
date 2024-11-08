@@ -1,8 +1,13 @@
 {
-    "cppUnitTestFramework.executable": "${workspaceFolder}/MAKE/TestRunner.exe",
-    "cppUnitTestFramework.workingDirectory": "${workspaceFolder}/MAKE",
     "testExplorer.useNativeTesting": false,
     "cmake.buildDirectory": "${workspaceFolder}/build",
     "cmake.testArgs": "",
-    "cmake.ctestArgs": "--output-on-failure"
+    "cmake.ctestArgs": [
+        "-C",
+        "Debug",
+        "--test-dir",
+        "${workspaceFolder}/build",
+        "-V"
+    ]
+    
 }
