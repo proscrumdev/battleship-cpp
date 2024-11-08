@@ -29,6 +29,13 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Build using cmake'
  
+- script: |
+    mkdir -p ./build/libs
+    ldd ./build/Battleship | grep "=>" | awk '{print $3}' | xargs -I '{}' cp '{}' ./build/libs/
+    patchelf --set-rpath '$ORIGIN/libs' ./build/Battleship
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Bundle required libraries'
+
 - script: 'ctest --output-junit $(Build.SourcesDirectory)/build/test_results.xml'
   workingDirectory: '$(Build.SourcesDirectory)/build'
   displayName: 'Execute Unit-Tests'
@@ -47,6 +54,12 @@ steps:
     Contents: 'Battleship'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/build/libs'
+    Contents: 'Battleship Libs'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/libs'
 
 - task: PublishBuildArtifacts@1
   inputs:
