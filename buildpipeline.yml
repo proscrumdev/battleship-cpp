@@ -20,6 +20,11 @@ steps:
 - script: 'mkdir ./build'
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Create build directory'
+
+- script: 'cmake -S . -B ./build'
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Configure using cmake'
+
 - script: 'cmake --build ./build'
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Build using cmake'
