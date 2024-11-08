@@ -36,7 +36,7 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Bundle required libraries'
 
-- script: 'ctest --output-junit $(Build.SourcesDirectory)/build/test_results.xml'
+- script: './TestRunner --gtest_output=xml:$(Build.SourcesDirectory)/build/test_results.xml'
   workingDirectory: '$(Build.SourcesDirectory)/build'
   displayName: 'Execute Unit-Tests'
   
