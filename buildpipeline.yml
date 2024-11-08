@@ -17,39 +17,25 @@ pool:
 container: battleship
 
 steps:
-- script: 'make TestRunner.exe'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'Build testrunner using make'
+- script: 'cmake --build ./build'
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Build using cmake'
  
-- script: './TestRunner.exe XML'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
+- script: 'ctest -V --output-log test_results.log'
+  workingDirectory: '$(Build.SourcesDirectory)/build'
   displayName: 'Execute Unit-Tests'
-
-- script: '/XSLTTransform_Linux_x64/XSLTTransform ./JUnitTransform.xslt ./cpptestresults.xml ./JUnitTestresults.xml'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'Transforming TestResults to JUnit format'
-
-- script: make
-  workingDirectory: $(Build.SourcesDirectory)/MAKE
-  displayName: 'Build using make'
-
-- script: 'pwd'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'pwd'
-  
-- script: 'ls'
-  workingDirectory: '$(Build.SourcesDirectory)/MAKE'
-  displayName: 'ls'
   
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: JUnit
-    testResultsFiles: '**/*Testresults.xml'
+    testResultsFiles: 'build/test_results.log'
+    testRunTitle: 'Google Test Results'
+    mergeTestResults: true
+    publishRunAttachments: true
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/MAKE/'
-    Contents: '**.exe'
+    SourceFolder: '$(Build.SourcesDirectory)/build/'
+    Contents: 'Battleship'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true'
 
