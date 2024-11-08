@@ -17,6 +17,11 @@ pool:
 container: battleship
 
 steps:
+- script: |
+    apt-get update
+    apt-get install -y cmake
+  displayName: 'Install CMake'
+  
 - script: 'cmake --build ./build'
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Build using cmake'
