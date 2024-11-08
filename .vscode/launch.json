@@ -24,7 +24,6 @@
             ],
             "preLaunchTask": "g++ build makefile",
             "miDebuggerPath": "/usr/bin/gdb"
-            }
         },
         {
             "name": "g++ build and run tests",
