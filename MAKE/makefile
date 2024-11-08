@@ -1,11 +1,16 @@
 TARGET = Battleship.exe
-CPPUNIT_PATH=/usr/local/lib
 CXX = g++
-CXXFLAGS = -g -O0
+CXXFLAGS = -g -O0 -I../Battleship.Ascii.Lib -I../Battleship.GameController.Lib -I../Battleship.GameController.Tests -I../Battleship.Ascii.Tests
 
+# Google Test paths (assuming they are installed in the default location)
+GTEST_DIR = /usr/src/gtest
+GTEST_LIB_DIR = /usr/local/lib
+
+# Main target
 $(TARGET): Battleship.o Program.a GameController.a 
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
+# Object files
 Battleship.o: ../Battleship.Ascii/Battleship.Ascii.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
@@ -30,20 +35,22 @@ Letters.o: ../Battleship.GameController.Lib/Letters.cpp ../Battleship.GameContro
 GameController.o: ../Battleship.GameController.Lib/GameController.cpp ../Battleship.GameController.Lib/GameController.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-TestRunner.exe: CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o
-	$(CXX) $(CXXFLAGS) $^ -o $@ -L${CPPUNIT_PATH}/lib -lstdc++ -lcppunit -ldl
+# Google Test target
+TestRunner: CheckIsHitTests.o IsShipValidTests.o ParsePositionTests.o TestRunner.o GameController.o Ship.o Position.o Letters.o Program.o
+	$(CXX) $(CXXFLAGS) $^ -o $@ -L$(GTEST_LIB_DIR) -lgtest -lgtest_main -pthread
 
-CheckIsHitTests.o: ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.cpp ../Battleship.GameController.Tests.CppUnit/CheckIsHitTests.h GameController.o Ship.o Position.o Letters.o
-	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
+CheckIsHitTests.o: ../Battleship.GameController.Tests/CheckIsHitTests.cpp ../Battleship.GameController.Tests/CheckIsHitTests.h GameController.o Ship.o Position.o Letters.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -I$(GTEST_DIR)/include
 
-IsShipValidTests.o: ../Battleship.GameController.Tests.CppUnit/IsShipValidTests.cpp ../Battleship.GameController.Tests.CppUnit/IsShipValidTests.h GameController.o Ship.o Position.o Letters.o
-	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
+IsShipValidTests.o: ../Battleship.GameController.Tests/IsShipValidTests.cpp ../Battleship.GameController.Tests/IsShipValidTests.h GameController.o Ship.o Position.o Letters.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -I$(GTEST_DIR)/include
 
-ParsePositionTests.o: ../Battleship.Ascii.Tests.CppUnit/ParsePositionTests.cpp ../Battleship.Ascii.Tests.CppUnit/ParsePositionTests.h GameController.o Ship.o Position.o Letters.o Program.o
-	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
+ParsePositionTests.o: ../Battleship.Ascii.Tests/ParsePositionTests.cpp ../Battleship.Ascii.Tests/ParsePositionTests.h GameController.o Ship.o Position.o Letters.o Program.o
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -I$(GTEST_DIR)/include
 
-TestRunner.o: ../Battleship.GameController.Tests.CppUnit/TestRunner.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $< -I${CPPUNIT_PATH}/include
+TestRunner.o: ../Battleship.GameController.Tests/TestRunner.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -I$(GTEST_DIR)/include
 
+# Clean target
 clean:
-	rm -f *.o *.a $(TARGET)
+	rm -f *.o *.a $(TARGET) TestRunner
