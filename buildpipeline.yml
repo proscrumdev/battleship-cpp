@@ -32,6 +32,7 @@ steps:
 - script: |
     mkdir -p ./build/libs
     ldd ./build/Battleship | grep "=>" | awk '{print $3}' | xargs -I '{}' cp '{}' ./build/libs/
+    cp /lib64/ld-linux-x86-64.so.2 ./build/libs/
     patchelf --set-rpath '$ORIGIN/libs' ./build/Battleship
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Bundle required libraries'
