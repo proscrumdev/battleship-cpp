@@ -17,6 +17,9 @@ pool:
 container: battleship
 
 steps: 
+- script: 'mkdir ./build'
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Create build directory'
 - script: 'cmake --build ./build'
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Build using cmake'
