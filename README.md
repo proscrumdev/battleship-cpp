@@ -1,9 +1,9 @@
 ![Build status](https://dev.azure.com/APS-SD-Stewards/APS-SD/_apis/build/status/proscrumdev.battleship-cpp-CI)
 
 # Battleship C++
-A simple game of Battleship, written in C++.
+A simple game of Battleship, written in C++. The purpose of this repository is to serve as an entry point into coding exercises and it was especially created for scrum.orgs Applying Professional Scrum for Software Development course (www.scrum.org/apssd). The code in this repository is unfinished by design.
 
-This code can be compiled by using MAKE. It has been tested on Ubuntu 20.04 and Debian GNU/Linux 10
+This code can be compiled by using MAKE or CMAKE. It has been tested on Ubuntu 20.04 and Debian GNU/Linux 10
 
 ## Build and run with a DevContainer (Recommended)
 
@@ -18,18 +18,31 @@ And you need to have Docker installed. You can download it from https://www.dock
 2. Open Visual Studio Code
 3. Click on the "Open Folder" button
 4. Select the folder where you cloned the repository
-5. Click on the "Reopen in Container" button in the bottom right corner
+5. Click on the "Reopen in Container" button in the bottom right corner or on the small blue area on the left bottom corner and then select "Reopen in Container from the drop-down on the top".
 
-Now you run your development environment in a Docker container. The first time you open the project in a DevContainer, it will take a few minutes to build the container. After that, the container will be reused and the startup time will be much faster.
+Now you are running your development environment in a Docker container. The first time you open the project in a DevContainer, it will take a few minutes to build the container. After that, the container will be reused and the startup time will be much faster.
 
-All settings in Visual Studio Code are stored in the .devcontainer folder and should get you started with the development quickly. 
+All settings in Visual Studio Code are stored in the .devcontainer and .vscode folder and should get you started with the development quickly. 
 - To build and run the application, you can just press \<Ctrl>+\<Shift>+\<B>. 
 - To debug the application, you can press F5. 
 - To run the tests you can press \<Ctrl>+\<Shift>+\<T>.
 
+VSCode also features an TextExplorer UI. The DevContainer has all necessary extensions installed. You can run test and see the results in the sidebar.
+
+![image](https://github.com/user-attachments/assets/1545f1fb-8437-43d7-a548-33bea62094c7)
+
 ## Build and run locally
 
-If you have a local development environment using gcc, you can build and run the application using MAKE
+If you have a local development environment using gcc, you can build and run the application using either CMAKE or MAKE
+
+### CMAKE
+```bash
+cd build
+cmake --build .
+./Battleship
+```
+
+### MAKE
 ```bash
 cd MAKE
 make
@@ -47,15 +60,7 @@ cd battleship-cpp
 docker build . -t battleship
 docker run -it -v ${PWD}:/battleship battleship bash
 ```
-
-### Build and run in the Docker container
-
-Build and run it using MAKE
-```bash
-cd /battleship/MAKE
-make
-./Battleship.exe
-```
+Then you can use the commands from above to build and execute the application.
 
 ## Build and run Unit-Tests
 
