@@ -23,9 +23,9 @@ And you need to have Docker installed. You can download it from https://www.dock
 Now you run your development environment in a Docker container. The first time you open the project in a DevContainer, it will take a few minutes to build the container. After that, the container will be reused and the startup time will be much faster.
 
 All settings in Visual Studio Code are stored in the .devcontainer folder and should get you started with the development quickly. 
-- To build and run the application, you can just press <Ctrl>+<Shift>+<B>. 
+- To build and run the application, you can just press \<Ctrl>+\<Shift>+\<B>. 
 - To debug the application, you can press F5. 
-- To run the tests you can press <Ctrl>+<Shift>+<T>.
+- To run the tests you can press \<Ctrl>+\<Shift>+\<T>.
 
 ## Build and run locally
 
