@@ -18,8 +18,8 @@ container: battleship
 
 steps:
 - script: |
-    apt-get update
-    apt-get install -y cmake
+    sudo apt-get update
+    sudo apt-get install -y cmake
   displayName: 'Install CMake'
   
 - script: 'cmake --build ./build'
