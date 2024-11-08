@@ -64,20 +64,23 @@ Then you can use the commands from above to build and execute the application.
 
 ## Build and run Unit-Tests
 
-You can run Unit-Tests in the Docker Container. They are created using CppUnit (https://sourceforge.net/projects/cppunit/). These tests can be found in the folders
-- Battleship.GameController.Tests.CppUnit
-- Battleship.Ascii.Tests.CppUnit
+You can run Unit-Tests in the Docker Container. They are created using Google Tests (https://github.com/google/googletest). These tests can be found in the folders
+- Battleship.GameController.Tests
+- Battleship.Ascii.Tests
 
-To prepare for execution of Unit-Tests, use these commands:
+### CMAKE
 
 ```bash
-export LD_LIBRARY_PATH=/usr/local/lib
-cd /battleship/MAKE
+cd build
+cmake --build .
+ctest -V
 ```
-For each execution you then just run
+
+### MAKE
 
 ```bash
-make TestRunner.exe
-./TestRunner.exe
+cd MAKE
+make TestRunner
+./TestRunner
 ```
 
