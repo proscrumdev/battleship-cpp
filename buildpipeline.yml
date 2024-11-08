@@ -58,7 +58,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/build/libs'
-    Contents: 'Battleship Libs'
+    Contents: '*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/libs'
 
 - task: PublishBuildArtifacts@1
