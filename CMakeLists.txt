@@ -62,3 +62,7 @@ enable_testing()
 
 # Add the test executable to CTest
 add_test(NAME AllTests COMMAND TestRunner --gtest_color=yes)
+
+# Set the output format for CTest
+set(CTEST_OUTPUT_ON_FAILURE ON)
+set(CTEST_CUSTOM_TEST_OUTPUT_DIR ${CMAKE_BINARY_DIR}/test_results)

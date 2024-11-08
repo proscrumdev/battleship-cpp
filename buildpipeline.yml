@@ -29,13 +29,14 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Build using cmake'
  
-- script: 'ctest -V --output-log test_results.log'
+- script: 'ctest --output-junit $(Build.SourcesDirectory)/build/test_results.xml'
   workingDirectory: '$(Build.SourcesDirectory)/build'
   displayName: 'Execute Unit-Tests'
   
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: 'build/test_results.log'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(Build.SourcesDirectory)/build/test_results.xml'
     testRunTitle: 'Google Test Results'
     mergeTestResults: true
     publishRunAttachments: true
