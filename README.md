@@ -62,11 +62,31 @@ docker run -it -v ${PWD}:/battleship battleship bash
 ```
 Then you can use the commands from above to build and execute the application.
 
-## Build and run Unit-Tests
+# Build and run Unit-Tests outside of VSCode
 
-You can run Unit-Tests in the Docker Container. They are created using Google Tests (https://github.com/google/googletest). These tests can be found in the folders
-- Battleship.GameController.Tests
-- Battleship.Ascii.Tests
+You can run Unit-Tests on the console. They are created using Google Tests (https://github.com/google/googletest).
+You need to install Google Tests to build and run the unit test.
+
+## Install Google Test
+### Linux
+```bash
+sudo apt update
+sudo apt install libgtest-dev
+```
+
+### macOS
+```bash
+brew install googletest
+```
+
+### Windows
+1. Install vcpkg.
+2. Install Google Tests
+```bash
+vcpkg install gtest
+```
+
+## Run Google Tests
 
 ### CMAKE
 
